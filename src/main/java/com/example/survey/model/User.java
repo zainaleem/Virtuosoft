@@ -36,7 +36,7 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "username")
+    @Column(name = "username",unique = true)
     private String username;
 
     public List<Role> getRoles() {

@@ -23,6 +23,9 @@ UserRepo userRepository;
         return userRepository.findAll();
     }
 
+    @GetMapping("/users/username")
+    public User getUserByUsername(@RequestParam String username){ return userRepository.findByUsername(username); }
+
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User userDetails) {
 
@@ -45,4 +48,6 @@ UserRepo userRepository;
         }
         return ResponseEntity.ok(updateUser);
     }
+
+
 }
