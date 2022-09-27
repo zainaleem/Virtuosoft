@@ -39,6 +39,17 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "username",unique = true)
     private String username;
 
+    @Column(name = "image_path")
+    private String imagePath;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     public List<Role> getRoles() {
         return roles;
     }
@@ -52,21 +63,25 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return true;
     }
@@ -92,6 +107,7 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = this.roles.stream()
                 .map((role) -> new SimpleGrantedAuthority(role.getAccessLevel().toString())).collect(Collectors.toList());

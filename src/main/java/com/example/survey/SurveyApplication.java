@@ -55,6 +55,7 @@ public class SurveyApplication implements CommandLineRunner {
 			user.setUsername("system");
 			user.setPassword(passwordEncoder.encode("dexter456"));
 			user.setCreatedBy("system");
+			user.setImagePath("profile.jpg");
 			Role systemRole = new Role();
 			systemRole.setId(AppConstant.ADMIN_ID);
 			List<Role> systemRoles = new ArrayList<>();

@@ -28,7 +28,7 @@ UserRepo userRepository;
 
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User userDetails) {
-
+        userDetails.setImagePath(userDetails.getImagePath()!=null?userDetails.getImagePath():"profile.jpg");
         userDetails = userRepository.save(userDetails);
         return new ResponseEntity<User>(userDetails, HttpStatus.OK);
     }
