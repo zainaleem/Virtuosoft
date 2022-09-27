@@ -35,32 +35,32 @@ public class SurveyApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		try {
 
-//			// CREATING ROLES
-//			Role adminRole = new Role();
-//			adminRole.setId(AppConstant.ADMIN_ID);
-//			adminRole.setAccessLevel(AccessLevel.ROLE_ADMIN);
-//
-//			Role userRole = new Role();
-//			userRole.setId(AppConstant.USER_ID);
-//			userRole.setAccessLevel(AccessLevel.ROLE_USER);
-//
-//			List<Role> roles = new ArrayList<>();
-//			roles.add(adminRole);
-//			roles.add(userRole);
-//			roleRepository.saveAll(roles);
+			/*// CREATING ROLES
+			Role adminRole = new Role();
+			adminRole.setId(AppConstant.ADMIN_ID);
+			adminRole.setAccessLevel(AccessLevel.ROLE_ADMIN);
 
-//			// PERSIST ADMIN USER
-//			User user = new User();
-//			user.setId(1l);
-//			user.setUsername("system");
-//			user.setPassword(passwordEncoder.encode("dexter456"));
-//			user.setCreatedBy("system");
-//			Role systemRole = new Role();
-//			systemRole.setId(AppConstant.ADMIN_ID);
-//			List<Role> systemRoles = new ArrayList<>();
-//			systemRoles.add(systemRole);
-//			user.setRoles(systemRoles);
-//			userRepository.save(user);
+			Role userRole = new Role();
+			userRole.setId(AppConstant.USER_ID);
+			userRole.setAccessLevel(AccessLevel.ROLE_USER);
+
+			List<Role> roles = new ArrayList<>();
+			roles.add(adminRole);
+			roles.add(userRole);
+			roleRepository.saveAll(roles);*/
+
+			/*// PERSIST ADMIN USER
+			User user = new User();
+			user.setId(1l);
+			user.setUsername("system");
+			user.setPassword(passwordEncoder.encode("dexter456"));
+			user.setCreatedBy("system");
+			Role systemRole = new Role();
+			systemRole.setId(AppConstant.ADMIN_ID);
+			List<Role> systemRoles = new ArrayList<>();
+			systemRoles.add(systemRole);
+			user.setRoles(systemRoles);
+			userRepository.save(user);*/
 
 		} catch (Exception e) {
 			e.printStackTrace();
