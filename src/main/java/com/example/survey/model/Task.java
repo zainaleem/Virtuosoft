@@ -1,6 +1,7 @@
 package com.example.survey.model;
 
 import com.example.survey.bases.BaseEntity;
+import com.example.survey.enums.TaskStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -19,11 +20,20 @@ public class Task extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "task")
     private List<Question> questions= new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "task_status")
+    private TaskStatus taskStatus;
+
+    public TaskStatus getTaskStatus() {
+        return taskStatus;
+    }
+
+    public void setTaskStatus(TaskStatus taskStatus) {
+        this.taskStatus = taskStatus;
+    }
+
     @Column(name = "name")
     private String name;
-
-    @Column(name = "description")
-    private String description;
 
     @Column(name = "parent_id")
     private Long parentId;
@@ -50,14 +60,6 @@ public class Task extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Long getParentId() {
