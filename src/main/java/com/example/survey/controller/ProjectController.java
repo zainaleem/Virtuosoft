@@ -22,6 +22,11 @@ public class ProjectController {
 
     }
 
+    @GetMapping("/projects/users/username")
+    public List<Project> getProjectsByUsername(@RequestParam String username){
+        return projectRepository.findProjectsByUsername(username);
+    }
+
     @PostMapping("/projects")
     public ResponseEntity<Project> createProject (@RequestBody Project projectDetails){
         projectDetails = projectRepository.save(projectDetails);
