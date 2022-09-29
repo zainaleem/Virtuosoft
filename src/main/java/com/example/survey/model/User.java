@@ -2,6 +2,7 @@ package com.example.survey.model;
 
 import com.example.survey.bases.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,9 +17,9 @@ import java.util.stream.Collectors;
 @Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "project_id")
-    @JsonIgnore
+    @JsonIgnoreProperties({"tasks"})
     private Project project;
 
     @ManyToMany(fetch = FetchType.EAGER)

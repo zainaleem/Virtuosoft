@@ -1,7 +1,9 @@
 package com.example.survey.controller;
 
 import com.example.survey.model.Company;
+import com.example.survey.model.Project;
 import com.example.survey.model.User;
+import com.example.survey.repository.ProjectRepo;
 import com.example.survey.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,9 +16,11 @@ import java.util.Optional;
 @RestController
 public class UserController {
 
-@Autowired
-UserRepo userRepository;
+    @Autowired
+    UserRepo userRepository;
 
+    @Autowired
+    ProjectRepo projectRepo;
 
     @GetMapping("/users")
     public List<User> getUserName() {
@@ -37,14 +41,19 @@ UserRepo userRepository;
     public ResponseEntity<User> updateUser(@RequestBody User userDetails) {
         User updateUser = null;
         Optional<User> userOptional = userRepository.findById(userDetails.getId());
-
         if (userOptional.isPresent()) {
             updateUser = userOptional.get();
             updateUser.setName(userDetails.getName());
             updateUser.setUsername(userDetails.getUsername());
             updateUser.setPassword(userDetails.getPassword());
             updateUser.setEmail(userDetails.getEmail());
-            userRepository.save(updateUser);
+            if(userDetails.getProject() != null){
+                Optional<Project> projectOptional = projectRepo.findById(userDetails.getProject().getId());
+                if(projectOptional.isPresent()){
+                    updateUser.setProject(projectOptional.get());
+                }
+            }
+            updateUser = userRepository.save(updateUser);
         }
         return ResponseEntity.ok(updateUser);
     }

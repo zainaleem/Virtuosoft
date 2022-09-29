@@ -19,7 +19,8 @@ public class Project extends BaseEntity {
     @JsonIgnore
     private Company company;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
+    @OneToMany(mappedBy = "project")
+    @JsonIgnore
     private List<User> users;
 
     @Column(name = "name")

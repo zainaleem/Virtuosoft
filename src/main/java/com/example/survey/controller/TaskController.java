@@ -37,7 +37,6 @@ public class TaskController {
         if (taskOptional.isPresent()) {
             updateTask = taskOptional.get();
             updateTask.setName(taskDetails.getName());
-            updateTask.setDescription(taskDetails.getDescription());
             updateTask.setParentId(taskDetails.getParentId());
             taskRepository.save(updateTask);
         }
