@@ -43,7 +43,7 @@ public class QuestionController {
         if (questionOptional.isPresent()) {
             updateQuestion = questionOptional.get();
             updateQuestion.setQuestion(questionDetails.getQuestion());
-            updateQuestion.setType(questionDetails.getType());
+            updateQuestion.setAnswerType(questionDetails.getAnswerType());
 
             questionRepository.save(updateQuestion);
         }

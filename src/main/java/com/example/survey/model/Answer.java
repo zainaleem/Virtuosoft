@@ -15,9 +15,6 @@ public class Answer extends BaseEntity {
     @JsonIgnore
     private Question question;
 
-    /*@ManyToOne
-    private Option options;*/
-
     @Column(name = "answer")
     private String answer;
 

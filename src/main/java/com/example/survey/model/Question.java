@@ -1,7 +1,7 @@
 package com.example.survey.model;
 
 import com.example.survey.bases.BaseEntity;
-import com.example.survey.enums.Type;
+import com.example.survey.enums.AnswerType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -22,7 +22,7 @@ public class Question extends BaseEntity {
     private String question;
 
     @Enumerated(EnumType.STRING)
-    private Type type;
+    private AnswerType answerType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
@@ -53,12 +53,12 @@ public class Question extends BaseEntity {
         this.options = options;
     }
 
-    public Type getType() {
-        return type;
+    public AnswerType getAnswerType() {
+        return answerType;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setAnswerType(AnswerType answerType) {
+        this.answerType = answerType;
     }
 
     public String getQuestion() {

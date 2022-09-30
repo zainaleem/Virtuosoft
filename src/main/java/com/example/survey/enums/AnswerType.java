@@ -1,6 +1,5 @@
 package com.example.survey.enums;
 
 public enum AnswerType {
-    IMAGE, NUMBER, BINARY, TEXT, MCQ
-
+    IMAGE, NUMBER, TEXT, RADIO, CHECKBOX
 }

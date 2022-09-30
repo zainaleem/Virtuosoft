@@ -1,13 +1,13 @@
 package com.example.survey.dtos;
 
 import com.example.survey.bases.BaseDto;
-import com.example.survey.enums.Type;
+import com.example.survey.enums.AnswerType;
 
 public class QuestionDto extends BaseDto {
 
     private String question;
 
-    private Type type;
+    private AnswerType answerType;
 
     private OptionDto optionDto;
 
@@ -19,12 +19,12 @@ public class QuestionDto extends BaseDto {
         this.question = question;
     }
 
-    public Type getType() {
-        return type;
+    public AnswerType getAnswerType() {
+        return answerType;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setAnswerType(AnswerType answerType) {
+        this.answerType = answerType;
     }
 
     public OptionDto getOptionDto() {
