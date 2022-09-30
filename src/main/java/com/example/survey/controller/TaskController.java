@@ -27,6 +27,11 @@ public class TaskController {
         return taskRepository.findAllByProjectId(projectId);
     }
 
+    @GetMapping("/tasks/username")
+    public List<Task> findAllByUsername(@RequestParam String username) {
+        return taskRepository.findAllByUsername(username);
+    }
+
     @PostMapping("/tasks")
     public ResponseEntity<Task> createUser(@RequestBody Task taskDetails) {
 

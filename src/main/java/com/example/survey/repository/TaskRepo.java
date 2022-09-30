@@ -12,4 +12,8 @@ import java.util.List;
 @Repository
 public interface TaskRepo extends JpaRepository<Task,Long> {
     List<Task> findAllByProjectId(Long projectId);
+
+
+    @Query(value = "select * from tasks t join projects p on p.id = t.project_id join users u on u.project_id = p.id where u.username=:username", nativeQuery = true)
+    List<Task> findAllByUsername(@Param(value = "username") String username);
 }
