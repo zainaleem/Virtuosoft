@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tasks")
@@ -35,8 +37,13 @@ public class Task extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "parent_id")
-    private Long parentId;
+    @ManyToOne(cascade={CascadeType.ALL})
+    @JoinColumn(name="parent_id")
+    @JsonIgnore
+    private Task parent;
+
+    @OneToMany(mappedBy="parent")
+    private Set<Task> subTasks = new HashSet<Task>();
 
     public List<Question> getQuestions() {
         return questions;
@@ -62,11 +69,19 @@ public class Task extends BaseEntity {
         this.name = name;
     }
 
-    public Long getParentId() {
-        return parentId;
+    public Task getParent() {
+        return parent;
     }
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setParent(Task parent) {
+        this.parent = parent;
+    }
+
+    public Set<Task> getSubTasks() {
+        return subTasks;
+    }
+
+    public void setSubTasks(Set<Task> subTasks) {
+        this.subTasks = subTasks;
     }
 }

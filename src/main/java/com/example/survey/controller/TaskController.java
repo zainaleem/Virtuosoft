@@ -22,6 +22,11 @@ public class TaskController {
         return taskRepository.findAll();
     }
 
+    @GetMapping("/tasks/{projectId}")
+    public List<Task> getAllTasksByProjectId(@PathVariable Long projectId) {
+        return taskRepository.findAllByProjectId(projectId);
+    }
+
     @PostMapping("/tasks")
     public ResponseEntity<Task> createUser(@RequestBody Task taskDetails) {
 
@@ -37,7 +42,7 @@ public class TaskController {
         if (taskOptional.isPresent()) {
             updateTask = taskOptional.get();
             updateTask.setName(taskDetails.getName());
-            updateTask.setParentId(taskDetails.getParentId());
+            updateTask.setSubTasks(taskDetails.getSubTasks());
             taskRepository.save(updateTask);
         }
         return ResponseEntity.ok(updateTask);
